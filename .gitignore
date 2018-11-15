@@ -1,0 +1,5 @@
+/node_modules
+/package-lock.json
+/data
+/config/production.json
+/npm-debug.log

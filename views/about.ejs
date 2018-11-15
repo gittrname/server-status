@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <!--CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <!--JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <%- include('./elements/top_menu', {active:'about'}) %>
+
+    <div class="container">
+      <div class="well">
+        <h1>About</h1>
+        <p>本ツールはTCP/IPプロトコルを定期的に監視して、その結果をWeb画面に表示する簡易な死活監視ツールです。</p>
+        <p>Telnetによる確認なのでコネクト待ち状態を確認する程度であり、監視先サーバーの正常動作を保障するものではありません。</p>
+      </div>
+    </div>
+  </body>
+</html>

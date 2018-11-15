@@ -1,0 +1,62 @@
+<%
+  var service = config.services[site];
+%>
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <!--CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <!--JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- Websocket -->
+    <script>
+      $(function(){
+        var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+        var host = location.href.replace(/^http/, protocol);
+        var ws = new WebSocket(host);
+
+        ws.onmessage = function(event) {
+          var data = JSON.parse(event.data);
+
+          var $elem = $("#status").children("td");
+          $elem.html("");
+          if (data.status) {
+            $elem.append($("<span>").addClass('glyphicon glyphicon-ok').attr('aria-hidden', 'true'));
+          } else {
+            $elem.append($("<span>").addClass('glyphicon glyphicon-off').attr('aria-hidden', 'true'));
+          }
+          console.log(status);
+        };
+      });
+  　</script>
+  </head>
+  <body>
+
+    <%- include('./elements/top_menu', {active:'site'}) %>
+
+    <div class="container">
+      <h1><%= site %></h1>
+      <table class="table table-border">
+        <tbody>
+          <tr id="domain">
+            <th>URL</th>
+            <td><%=service.domain %></td>
+          </tr>
+          <tr id="status">
+            <th>Status</th>
+            <td><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></td>
+          </tr>
+          <tr id="detail">
+            <th>詳細</th>
+            <td><%=service.detail %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "web":{
+    "title": "Sample",
+    "detail": "Sample Setting"
+  },
+  "services":{
+    "web01": {
+      "detail": "Monitering WebSite01",
+      "domain": "http://localhost:3000",
+      "host": "localhost",
+      "port": 3000,
+      "cron": "* * * * */5"
+    },
+    "web02": {
+      "detail": "Monitering WebSite02",
+      "domain": "http://localhost:3000",
+      "host": "localhost",
+      "port": 3000,
+      "cron": "* * * * */5"
+    }
+  },
+  "database": "./data/status.db"
+}

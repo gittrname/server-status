@@ -1,0 +1,9 @@
+{
+  "web":{
+    "title": "Site Example",
+    "detail": "Detail Example"
+  },
+  "services":{
+  },
+  "database": "./data/status.db"
+}
