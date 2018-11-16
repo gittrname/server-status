@@ -22,6 +22,9 @@
 
         ws.onmessage = function(event) {
           var data = JSON.parse(event.data);
+          if (!data) {
+            return;
+          }
 
           var $elem = $("#status").children("td");
           $elem.html("");
