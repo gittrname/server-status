@@ -10,6 +10,13 @@
     <!--JS -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="/javascripts/webthumbnail.js"></script>
+    <script>
+      $(function(){
+          $("body").append("<img src='' id='jqThumbnail' width='320' height='240' style='position:absolute;display:none'>");
+          $("a.thumb").webthumbnail();
+      });
+    </script>
     <!-- Websocket -->
     <script>
       $(function(){
@@ -69,7 +76,7 @@
             <% for(var key in config.services) { %>
             <tr id="<%=key %>">
               <td><a href="/status/<%=key %>"><%=key %></a></td>
-              <td><a class="thumbnail" href="<%=config.services[key].domain %>"><%=config.services[key].domain %></a></td>
+              <td><a class="thumb" href="<%=config.services[key].domain %>" target="_blank"><%=config.services[key].domain %></a></td>
               <td><span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="未確認"></span></td>
             </tr>
             <% } %>

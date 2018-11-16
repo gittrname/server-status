@@ -13,6 +13,13 @@
     <!--JS -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="/javascripts/webthumbnail.js"></script>
+    <script>
+      $(function(){
+          $("body").append("<img src='' id='jqThumbnail' width='320' height='240' style='position:absolute;display:none'>");
+          $("a.thumb").webthumbnail();
+      });
+    </script>
     <!-- Websocket -->
     <script>
       $(function(){
@@ -56,7 +63,7 @@
         <tbody>
           <tr id="domain">
             <th>URL</th>
-            <td><%=service.domain %></td>
+            <td><a class="thumb" href="<%=service.domain %>" target="_blank"><%=service.domain %></a></td>
           </tr>
           <tr id="status">
             <th>Status</th>
