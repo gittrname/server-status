@@ -22,7 +22,7 @@ TCP/IPプロトコルを定期的に監視してその結果をWeb画面に表�
 
 * dockerイメージ作成
 ```
-# docker build . server-status
+# docker build . -t server-status
 ```
 * 起動
 ```
