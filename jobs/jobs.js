@@ -7,7 +7,7 @@ var db = require('../database');
 //
 // ジョブクラス
 var Job = function(site, cronTime, params) {
-  
+
   // ジョブ生成
   return new CronJob(cronTime, function() {
 
@@ -17,19 +17,19 @@ var Job = function(site, cronTime, params) {
     // 接続成功時
     connection.on('connect', function() {
       console.log('['+ site +'] is Connected.');
-      db.update({name: site}, {$set: {status: true}}, {multi: true, upsert: true});
+      db.update({name: site}, {$set: {status: true, updated: new Date()}}, {multi: true, upsert: true});
       connection.end();
     });
     // 接続タイムアウト時
     connection.on('timeout', function() {
       console.log('['+ site +'] is Connect Timeout!');
-      db.update({name: site}, {$set: {status: false}}, {multi: true, upsert: true});
+      db.update({name: site}, {$set: {status: false, updated: new Date()}}, {multi: true, upsert: true});
       connection.end();
     });
     // 接続エラー時
     connection.on('error', function() {
       console.log('['+ site +'] is Connect Error!');
-      db.update({name: site}, {$set: {status: false}}, {multi: true, upsert: true});
+      db.update({name: site}, {$set: {status: false, updated: new Date()}}, {multi: true, upsert: true});
       connection.end();
     });
 

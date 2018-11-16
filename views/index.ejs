@@ -25,9 +25,17 @@
 
             $elem.html("");
             if (data.status) {
-              $elem.append($("<span>").addClass('glyphicon glyphicon-ok').attr('aria-hidden', 'true'));
+              $elem.append(
+                $("<span>").addClass('glyphicon glyphicon-ok')
+                  .attr('aria-hidden', 'true')
+                  .attr('title', '稼働中 (最終確認：'+data.updated+')')
+              );
             } else {
-              $elem.append($("<span>").addClass('glyphicon glyphicon-off').attr('aria-hidden', 'true'));
+              $elem.append(
+                $("<span>").addClass('glyphicon glyphicon-off')
+                  .attr('aria-hidden', 'true')
+                  .attr('title', '停止中 (最終確認：'+data.updated+')')
+              );
             }
             console.log(data.status);
           }
@@ -61,8 +69,8 @@
             <% for(var key in config.services) { %>
             <tr id="<%=key %>">
               <td><a href="/status/<%=key %>"><%=key %></a></td>
-              <td><a href="<%=config.services[key].domain %>"><%=config.services[key].domain %></a></td>
-              <td><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></td>
+              <td><a class="thumbnail" href="<%=config.services[key].domain %>"><%=config.services[key].domain %></a></td>
+              <td><span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="未確認"></span></td>
             </tr>
             <% } %>
           </tbody>

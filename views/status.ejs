@@ -29,9 +29,17 @@
           var $elem = $("#status").children("td");
           $elem.html("");
           if (data.status) {
-            $elem.append($("<span>").addClass('glyphicon glyphicon-ok').attr('aria-hidden', 'true'));
+            $elem.append(
+              $("<span>").addClass('glyphicon glyphicon-ok')
+                .attr('aria-hidden', 'true')
+                .attr('title', '稼働中 (最終確認：'+data.updated+')')
+            );
           } else {
-            $elem.append($("<span>").addClass('glyphicon glyphicon-off').attr('aria-hidden', 'true'));
+            $elem.append(
+              $("<span>").addClass('glyphicon glyphicon-off')
+                .attr('aria-hidden', 'true')
+                .attr('title', '停止中 (最終確認：'+data.updated+')')
+            );
           }
           console.log(status);
         };
@@ -52,7 +60,7 @@
           </tr>
           <tr id="status">
             <th>Status</th>
-            <td><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></td>
+            <td><span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" title="未確認"></span></td>
           </tr>
           <tr id="detail">
             <th>詳細</th>
